@@ -112,11 +112,33 @@ class _weatherAppState extends State<weatherApp> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  HourlyWeatherCard(),
-                  HourlyWeatherCard(),
-                  HourlyWeatherCard(),
-                  HourlyWeatherCard(),
-                  HourlyWeatherCard(),
+                  HourlyWeatherCard(
+                    time: '9:00',
+                    iconWeather: Icons.sunny,
+                    temp: '277.89',
+                  ),
+                  HourlyWeatherCard(
+                    time: '11:00',
+                    iconWeather: Icons.sunny,
+                    temp: '277.89',
+                  ),
+                  HourlyWeatherCard(
+                    time: '12:00',
+                    iconWeather:
+                        Icons.cloudy_snowing,
+                    temp: '200.89',
+                  ),
+                  HourlyWeatherCard(
+                    time: '16:00',
+                    iconWeather: Icons.cloud,
+                    temp: '277.89',
+                  ),
+                  HourlyWeatherCard(
+                    time: '23:00',
+                    iconWeather:
+                        Icons.cloudy_snowing,
+                    temp: '277.89',
+                  ),
                 ],
               ),
             ),
@@ -143,12 +165,12 @@ class _weatherAppState extends State<weatherApp> {
                   value: '94',
                 ),
                 AdditionalInfoCard(
-                  icon: Icons.waves,
+                  icon: Icons.air,
                   label: 'Wind Speed',
                   value: '74',
                 ),
                 AdditionalInfoCard(
-                  icon: Icons.umbrella_rounded,
+                  icon: Icons.beach_access,
                   label: 'Pressure',
                   value: '107',
                 ),
