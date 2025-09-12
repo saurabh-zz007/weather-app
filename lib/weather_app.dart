@@ -137,9 +137,21 @@ class _weatherAppState extends State<weatherApp> {
                   MainAxisAlignment.spaceAround,
 
               children: [
-                AdditionalInfoCard(),
-                AdditionalInfoCard(),
-                AdditionalInfoCard(),
+                AdditionalInfoCard(
+                  icon: Icons.water_drop,
+                  label: 'Humidity',
+                  value: '94',
+                ),
+                AdditionalInfoCard(
+                  icon: Icons.waves,
+                  label: 'Wind Speed',
+                  value: '74',
+                ),
+                AdditionalInfoCard(
+                  icon: Icons.umbrella_rounded,
+                  label: 'Pressure',
+                  value: '107',
+                ),
               ],
             ),
           ],

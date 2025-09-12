@@ -56,7 +56,15 @@ class HourlyWeatherCard extends StatelessWidget {
 }
 
 class AdditionalInfoCard extends StatelessWidget {
-  const AdditionalInfoCard({super.key});
+  final IconData icon;
+  final String label;
+  final String value;
+  const AdditionalInfoCard({
+    super.key,
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +73,14 @@ class AdditionalInfoCard extends StatelessWidget {
       color: Colors.transparent,
       child: Column(
         children: [
-          Icon(Icons.water_drop, size: 32),
+          Icon(icon, size: 32),
           SizedBox(height: 10),
           Text(
-            'Humidity',
+            label,
             style: TextStyle(fontSize: 10),
           ),
           Text(
-            '94',
+            value,
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
