@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:ui';
-import 'package:weather_app/Secrets.dart';
+import 'package:weather_app/secret.dart';
 import 'package:weather_app/weater_app_cards_data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,7 +18,7 @@ class _weatherAppState extends State<weatherApp> {
   Future<Map<String, dynamic>>
   getCurrentWeather() async {
     try {
-      String cityName = 'Salempur';
+      String cityName = 'Gorakhpur';
       final res = await http.get(
         Uri.parse(
           'http://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$API',
@@ -48,7 +48,9 @@ class _weatherAppState extends State<weatherApp> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {});
+            },
             icon: Icon(Icons.refresh),
           ),
         ],
