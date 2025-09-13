@@ -18,7 +18,6 @@ class _weatherAppState extends State<weatherApp> {
   Future<Map<String, dynamic>>
   getCurrentWeather() async {
     try {
-      String cityName = 'Gorakhpur';
       final res = await http.get(
         Uri.parse(
           'http://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$API',
