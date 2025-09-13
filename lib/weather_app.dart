@@ -4,6 +4,7 @@ import 'package:weather_app/Secrets.dart';
 import 'package:weather_app/weater_app_cards_data.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class weatherApp extends StatefulWidget {
   const weatherApp({super.key});
@@ -135,9 +136,11 @@ class _weatherAppState extends State<weatherApp> {
                               ),
                               Icon(
                                 currentSky ==
-                                            'Rain' ||
-                                        currentSky ==
-                                            'Clouds'
+                                        'Rain'
+                                    ? Icons
+                                          .cloudy_snowing
+                                    : currentSky ==
+                                          'Clouds'
                                     ? Icons.cloud
                                     : Icons.sunny,
                                 size: 64,
@@ -167,38 +170,37 @@ class _weatherAppState extends State<weatherApp> {
                   ),
                 ),
                 SizedBox(height: 8),
-                const SingleChildScrollView(
+                SingleChildScrollView(
                   scrollDirection:
                       Axis.horizontal,
                   child: Row(
                     children: [
-                      HourlyWeatherCard(
-                        time: '9:00',
-                        iconWeather: Icons.sunny,
-                        temp: '277.89',
-                      ),
-                      HourlyWeatherCard(
-                        time: '11:00',
-                        iconWeather: Icons.sunny,
-                        temp: '277.89',
-                      ),
-                      HourlyWeatherCard(
-                        time: '12:00',
-                        iconWeather:
-                            Icons.cloudy_snowing,
-                        temp: '200.89',
-                      ),
-                      HourlyWeatherCard(
-                        time: '16:00',
-                        iconWeather: Icons.cloud,
-                        temp: '277.89',
-                      ),
-                      HourlyWeatherCard(
-                        time: '23:00',
-                        iconWeather:
-                            Icons.cloudy_snowing,
-                        temp: '277.89',
-                      ),
+                      for (int i = 0; i < 5; i++)
+                        HourlyWeatherCard(
+                          time: DateFormat.j()
+                              .format(
+                                DateTime.parse(
+                                  data['list'][i +
+                                      1]['dt_txt'],
+                                ),
+                              ),
+                          iconWeather:
+                              data['list'][i +
+                                      1]['weather'][0]['main'] ==
+                                  'Clouds'
+                              ? Icons.cloud
+                              : data['list'][i +
+                                        1]['weather'][0]['main'] ==
+                                    'Rain'
+                              ? Icons
+                                    .cloudy_snowing
+                              : Icons.sunny,
+
+                          temp:
+                              data['list'][i +
+                                      1]['main']['temp']
+                                  .toString(),
+                        ),
                     ],
                   ),
                 ),
